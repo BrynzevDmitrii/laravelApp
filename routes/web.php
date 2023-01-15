@@ -16,3 +16,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/hello/{name}', static function (string $name): string {
+    return "Hello, {$name}";
+});
+
+
+Route::get('/info', static function () {
+    return "This page is info";
+});
+
+
+Route::get('/news/{id}', static function ( int $id): string {
+    return "This page new number {$id}";
+});
