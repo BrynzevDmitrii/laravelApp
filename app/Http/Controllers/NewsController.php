@@ -16,9 +16,13 @@ class NewsController extends BaseController
         return \view('news.index', ['categorty'=>$this->getCategory()]);
     }
 
-    public function show()
+    public function show($id)
     {
-        return \view('news.news', ['news'=>$this->getCategory()]);
+        return \view('news.news', ['news'=>$this->getCategory($id)]);
+    }
+
+    public function showNews(){
+
     }
 
 }
