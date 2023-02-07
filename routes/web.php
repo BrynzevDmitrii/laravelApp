@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\Admiin\IndexController as AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,11 @@ use App\Http\Controllers\NewsController;
 */
 
 // Route::get('/', [NewsController::class, 'index'])->name('news.show');
+
+//admin routs
+Route::group(['prefix'=>'admin'], static function(){
+    Route:: get('/', AdminController::class)->name('admin.index');
+});
 
 
 Route::get('/category', [NewsController::class, 'index'])->name('category');
