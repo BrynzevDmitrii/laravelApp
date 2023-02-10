@@ -5,13 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>Админка новостного сайта</title>
-
-    <
     <!-- Bootstrap core CSS -->
     <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="dashboard.css" rel="stylesheet">
+    <link href="{{asset('assets/css/dashboard.css')}}" rel="stylesheet">
   </head>
 
   <body>
@@ -19,29 +17,29 @@
       <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/admin">Админка новостного сайта</a>
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-          <a class="nav-link" href="#">Выйти</a>
+          <a class="nav-link active" href="#">Выйти</a>
         </li>
       </ul>
     </nav>
 
-    <div class="container-fluid">
-      <div class="row">
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-          <div class="sidebar-sticky">
-            <ul class="nav flex-column">
+    <div class="container-fluid ">
+      <div class="row h-full">
+        <nav class="col-md-2 d-none d-md-block bg-light   sidebar">
+          <div class="sidebar-sticky min-vh-100">
+            <ul class="nav flex-column vh-100">
               <li class="nav-item">
-                <a class="nav-link active" href="#">
-                  <span data-feather="home"></span>
+                <a class="nav-link  @if(request()->routeIs('admin.index'))active @endif" href="{{ route('admin.index') }}">
+                  <span data-feather="home">Home</span>
                    <span class="sr-only">(current)</span>
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
+              <li class="nav-item  ">
+                <a class="nav-link @if(request()->routeIs('admin.news.*'))active @endif " href="{{ route('admin.news.create') }}">
                   <span data-feather="file"></span>
-                  Orders
+                  News
                 </a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item ">
                 <a class="nav-link" href="#">
                   <span data-feather="shopping-cart"></span>
                   Products
