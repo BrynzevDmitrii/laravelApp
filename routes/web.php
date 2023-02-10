@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
-use App\Http\Controllers\Admiin\IndexController as AdminController;
+use App\Http\Controllers\Admiin\NewsController as AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,15 +15,24 @@ use App\Http\Controllers\Admiin\IndexController as AdminController;
 |
 */
 
-// Route::get('/', [NewsController::class, 'index'])->name('news.show');
 
-//admin routs
 Route::group(['prefix'=>'admin'], static function(){
-    Route:: get('/', AdminController::class)->name('admin.index');
+
+    Route:: get('/', [AdminController::class, 'index'])->name('admin.index');
+    Route:: match(['post', 'get'], '/news', [AdminController::class, 'store'])->name('admin.news');
+    Route:: get('/news/create', [AdminController::class, 'create'])->name('admin.news.create');
+
 });
 
 
-Route::get('/category', [NewsController::class, 'index'])->name('category');
+Route::group(['prefix'=>'home'], static function(){
+    Route::get('/', [NewsController::class, 'index'])->name('category');
+    Route::get('/news/{id}/show', [NewsController::class, 'show'])->name('news.show');
+    Route::get('/feedbackForm', [NewsController::class, 'feedbackForm'])->name('news.feedbackForm');
+    Route::get('/dataForm', [NewsController::class, 'dataForm'])->name('news.dataForm');
+});
 
 
-Route::get('/news/{id}/show', [NewsController::class, 'show'])->name('news.show');
+
+
+

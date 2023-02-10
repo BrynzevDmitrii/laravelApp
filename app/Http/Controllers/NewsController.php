@@ -21,8 +21,12 @@ class NewsController extends BaseController
         return \view('news.news', ['news'=>$this->getCategory($id)]);
     }
 
-    public function showNews(){
+    public function feedbackForm(){
+        return \view('news.feedbackForm');
+    }
 
+    public function dataForm(){
+        return \view('news.dataForm');
     }
 
 }
